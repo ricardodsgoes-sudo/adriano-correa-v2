@@ -20,7 +20,9 @@ node_modules/
 # Build Next.js
 .next/
 out/
-tsconfig.tsbuildinfo
+_next/
+*.tsbuildinfo
+index.txt
 .deploy-tmp/
 
 # Arquivos temporários
