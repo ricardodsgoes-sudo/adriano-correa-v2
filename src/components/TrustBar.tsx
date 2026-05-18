@@ -43,10 +43,10 @@ const MessageIcon = () => (
 );
 
 const items = [
-  { Icon: ShieldIcon, label: 'Representante Oficial', sub: 'Grupo Ademicon' },
-  { Icon: MapPinIcon, label: 'Curitiba e São Paulo', sub: 'Atendimento presencial e remoto' },
-  { Icon: UsersIcon,  label: '+500 clientes',        sub: 'Atendidos com sucesso' },
-  { Icon: MessageIcon,label: 'Atendimento direto',   sub: 'Sem call center, fala com o Adriano' },
+  { Icon: ShieldIcon,  label: 'Representante oficial Ademicon',          sub: '' },
+  { Icon: MessageIcon, label: 'Atendimento direto com Adriano',          sub: '' },
+  { Icon: UsersIcon,   label: '+500 clientes atendidos',                 sub: '' },
+  { Icon: MapPinIcon,  label: 'Consultoria para imóvel, veículo e crédito', sub: '' },
 ];
 
 export default function TrustBar() {
@@ -65,22 +65,19 @@ export default function TrustBar() {
             visible: { transition: { staggerChildren: reduced ? 0 : 0.08 } },
           }}
         >
-          {items.map(({ Icon, label, sub }, i) => (
+          {items.map(({ Icon, label }) => (
             <motion.div
               key={label}
               variants={{
                 hidden:   { opacity: 0, y: reduced ? 0 : 12 },
                 visible:  { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } },
               }}
-              className={`${i === 1 || i === 3 ? 'hidden sm:flex' : 'flex'} items-center gap-3 lg:px-8 lg:first:pl-0 lg:last:pr-0`}
+              className="flex items-center gap-3 lg:px-8 lg:first:pl-0 lg:last:pr-0"
             >
-              <span className="shrink-0 w-9 h-9 rounded-lg bg-brand-red/10 text-brand-red flex items-center justify-center">
+              <span className="shrink-0 w-8 h-8 rounded-md bg-brand-red/10 text-brand-red flex items-center justify-center">
                 <Icon />
               </span>
-              <div>
-                <p className="font-display font-bold text-[0.88rem] text-black leading-tight">{label}</p>
-                <p className="text-[0.75rem] text-gray-500 leading-snug mt-0.5">{sub}</p>
-              </div>
+              <p className="font-display font-semibold text-[0.85rem] text-black leading-snug">{label}</p>
             </motion.div>
           ))}
         </motion.div>

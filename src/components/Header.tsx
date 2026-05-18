@@ -37,7 +37,11 @@ export default function Header() {
     >
       <div className="max-w-[1280px] mx-auto px-7 md:px-10 lg:px-12 py-5 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Voltar ao topo"
+          className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 rounded-sm"
+        >
           <Image
             src="/logo01.png"
             alt="Adriano Correa — Consultor Ademicon"
@@ -46,7 +50,7 @@ export default function Header() {
             className="object-contain"
             priority
           />
-        </div>
+        </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-9">

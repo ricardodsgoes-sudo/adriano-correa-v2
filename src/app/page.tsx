@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import PorQueAdriano from '@/components/PorQueAdriano';
 import TrustBar from '@/components/TrustBar';
 import SobreAdriano from '@/components/SobreAdriano';
 import ConsorcioVsCredito from '@/components/ConsorcioVsCredito';
@@ -15,7 +14,6 @@ export default function Home() {
     <main className="overflow-hidden">
       <Header />
       <Hero />
-      <PorQueAdriano />
       <TrustBar />
       <SobreAdriano />
       <ConsorcioVsCredito />
