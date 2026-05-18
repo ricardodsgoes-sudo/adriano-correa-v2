@@ -1,7 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { motion, useMotionValue, useTransform, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
+import PlanoDeConquista from './PlanoDeConquista';
+
+const WHATSAPP_NUMBER = '554197354371';
 
 const svgProps = {
   xmlns: 'http://www.w3.org/2000/svg',
@@ -39,21 +43,15 @@ const BarChartIcon = () => (
   </svg>
 );
 
-const HEADER_H = 72;
+const HEADER_H = 96;
 
 const line1 = ['Consórcio', 'não', 'é', 'apenas', 'sorteio.'];
 const line2 = ['É', 'uma', 'opção', 'inteligente', 'de', 'crédito.'];
 
 const cards = [
-  { Icon: HomeIcon,     label: 'Imóveis',    desc: 'Casa própria sem juros — planejamento que cabe no bolso.' },
-  { Icon: CarIcon,      label: 'Automóveis', desc: 'Troca de carro com disciplina, sem comprometer renda.' },
-  { Icon: BarChartIcon, label: 'Crédito',    desc: 'Capital inteligente pra quem quer crescer com estratégia.' },
-];
-
-const stats = [
-  { value: '+500',    label: 'Clientes atendidos' },
-  { value: '10 anos', label: 'De experiência' },
-  { value: '100%',    label: 'Dedicação' },
+  { Icon: HomeIcon,     label: 'Quero um imóvel',           desc: 'Casa, apartamento, terreno ou investimento.', goal: 'Imóvel' },
+  { Icon: CarIcon,      label: 'Quero um veículo',          desc: 'Carro, moto ou troca planejada.',             goal: 'Veículo' },
+  { Icon: BarChartIcon, label: 'Quero crédito estratégico', desc: 'Capital, serviço, reforma ou patrimônio.',    goal: 'Crédito' },
 ];
 
 const wordVariants = {
@@ -67,6 +65,16 @@ const wordVariants = {
 
 export default function Hero() {
   const reduced = useReducedMotion();
+
+  const [diagOpen, setDiagOpen] = useState(false);
+  const [diagGoal, setDiagGoal] = useState<string | null>(null);
+  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+
+  const openDiagnostico = (goal: string | null = null) => {
+    setDiagGoal(goal);
+    setSelectedGoal(goal);
+    setDiagOpen(true);
+  };
 
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -101,7 +109,7 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/imagem-hero-teste.png"
+          src="/imagem-hero-nova.png"
           alt="Homem olhando para imóvel e carro"
           fill
           className="object-cover"
@@ -111,12 +119,12 @@ export default function Hero() {
       </div>
 
       <div
-        className="max-w-[1400px] mx-auto flex flex-col lg:flex-row relative z-10"
-        style={{ minHeight: `calc(100vh - ${HEADER_H}px)` }}
+        className="max-w-[1280px] mx-auto flex flex-col lg:flex-row relative z-10"
+        style={{ minHeight: `clamp(680px, calc(100dvh - ${HEADER_H}px), 768px)` }}
       >
 
         {/* ── LEFT CONTENT ── */}
-        <div className="relative z-10 flex flex-col px-8 md:px-12 lg:pl-12 lg:pr-8 pt-10 pb-12 lg:pt-14 lg:pb-14 lg:w-[54%]">
+        <div className="relative z-10 flex flex-col lg:justify-center px-7 md:px-10 lg:pl-12 lg:pr-8 pt-9 pb-14 lg:py-10 lg:w-[57%]">
 
           {/* Ambient glow */}
           <motion.div
@@ -134,8 +142,8 @@ export default function Hero() {
 
           {/* Title */}
           <motion.h1
-            className="font-display font-bold mb-4"
-            style={{ lineHeight: 1.1 }}
+            className="font-display font-bold mb-5"
+            style={{ lineHeight: 1.08 }}
             initial="hidden"
             animate="visible"
             variants={{
@@ -149,7 +157,7 @@ export default function Hero() {
                   key={`a${i}`}
                   variants={reduced ? {} : wordVariants}
                   className="inline-block mr-[0.27em]"
-                  style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2.2rem)' }}
+                  style={{ fontSize: 'clamp(2.5rem, 3.7vw, 3.5rem)' }}
                 >
                   {w}
                 </motion.span>
@@ -161,7 +169,7 @@ export default function Hero() {
                   key={`b${i}`}
                   variants={reduced ? {} : wordVariants}
                   className="inline-block mr-[0.27em] text-brand-red"
-                  style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2.2rem)' }}
+                  style={{ fontSize: 'clamp(2.5rem, 3.7vw, 3.5rem)' }}
                 >
                   {w}
                 </motion.span>
@@ -169,17 +177,17 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Description */}
+          {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[0.93rem] text-gray-600 leading-relaxed mb-7"
-            style={{ maxWidth: 400 }}
+            transition={{ duration: 0.55, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[1.12rem] sm:text-[1.18rem] text-gray-600 leading-relaxed mb-7"
+            style={{ maxWidth: 520 }}
           >
-            Você tem várias maneiras de liberar crédito na Ademicon. Saiba quais
-            são os tipos de consórcio. Saia do estigma e descubra como funciona
-            de verdade.
+            Descubra qual caminho faz mais sentido para conquistar imóvel,
+            veículo ou crédito com planejamento e orientação especializada
+            Ademicon.
           </motion.p>
 
           {/* Buttons */}
@@ -187,72 +195,122 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row gap-3 mb-8"
+            className="flex flex-col sm:flex-row gap-3.5 mb-7"
           >
+            <motion.button
+              onClick={() => openDiagnostico(null)}
+              className="w-full sm:w-auto min-h-[54px] inline-flex items-center justify-center gap-2 px-9 py-4 bg-brand-red text-white font-semibold text-[1.05rem] rounded-lg shadow-[0_12px_28px_-8px_rgba(255,0,0,0.5)] transition-[background-color,box-shadow] duration-200 hover:bg-red-700 hover:shadow-[0_18px_38px_-8px_rgba(255,0,0,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2"
+              whileHover={reduced ? {} : { y: -3, scale: 1.02 }}
+              whileTap={reduced ? {} : { y: 0, scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 16 }}
+            >
+              Fazer diagnóstico gratuito
+              <svg xmlns="http://www.w3.org/2000/svg" width={19} height={19} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+              </svg>
+            </motion.button>
             <motion.a
-              href="https://wa.me/5541999999999"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-sm font-semibold text-center"
-              whileHover={reduced ? {} : { scale: 1.04 }}
-              whileTap={reduced ? {} : { scale: 0.96 }}
-              transition={{ type: 'spring', stiffness: 420, damping: 18 }}
+              className="w-full sm:w-auto min-h-[54px] inline-flex items-center justify-center px-9 py-4 border-2 border-brand-red text-brand-red font-semibold text-[1.05rem] rounded-lg transition-[background-color,color,box-shadow] duration-200 hover:bg-brand-red hover:text-white hover:shadow-[0_14px_30px_-10px_rgba(255,0,0,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2"
+              whileHover={reduced ? {} : { y: -3, scale: 1.02 }}
+              whileTap={reduced ? {} : { y: 0, scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 16 }}
             >
-              Quero conhecer as opções
+              Falar com Adriano
             </motion.a>
-            <motion.button
-              onClick={() => document.getElementById('consorcio')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-secondary text-sm font-semibold"
-              whileHover={reduced ? {} : { scale: 1.04 }}
-              whileTap={reduced ? {} : { scale: 0.96 }}
-              transition={{ type: 'spring', stiffness: 420, damping: 18 }}
-            >
-              Entender melhor
-            </motion.button>
           </motion.div>
 
-          {/* Feature cards — glass */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-6">
-            {cards.map(({ Icon, label, desc }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 rounded-2xl p-4 border border-gray-200/70 bg-white/60 backdrop-blur-md shadow-sm"
-              >
-                <span className="text-brand-red mb-3 block"><Icon /></span>
-                <h3 className="font-display font-bold text-[0.95rem] text-black mb-1.5">{label}</h3>
-                <p className="text-[0.82rem] text-gray-500 leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Stats pill — inside left column, same as template */}
+          {/* ── Módulo Plano de Conquista ── */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 1.45, ease: [0.22, 1, 0.36, 1] }}
-            className="flex divide-x divide-gray-300 rounded-xl overflow-hidden bg-[#F3F3F3]"
+            transition={{ duration: 0.55, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-2xl border border-white/70 bg-white/55 backdrop-blur-xl p-4 sm:p-5 shadow-[0_18px_50px_-18px_rgba(0,0,0,0.28)] ring-1 ring-black/[0.04]"
           >
-            {stats.map(({ value, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 1.55 + i * 0.1 }}
-                className="flex-1 text-center py-4 px-3"
-              >
-                <div className="text-[1.85rem] font-display font-bold text-brand-red leading-none mb-0.5">
-                  {value}
-                </div>
-                <div className="text-xs text-gray-500">{label}</div>
-              </motion.div>
-            ))}
+            {/* Cabeçalho do módulo */}
+            <div className="flex items-start gap-3 mb-4 px-1">
+              <span className="shrink-0 inline-flex w-11 h-11 items-center justify-center rounded-xl bg-brand-red text-white shadow-[0_8px_18px_-6px_rgba(255,0,0,0.6)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+                </svg>
+              </span>
+              <div>
+                <h2 className="font-display font-bold text-[1.22rem] sm:text-[1.32rem] text-black leading-tight">
+                  Plano de Conquista
+                </h2>
+                <p className="text-[0.92rem] text-gray-600 leading-snug mt-0.5">
+                  Escolha seu objetivo e receba uma análise personalizada em 30
+                  segundos.
+                </p>
+              </div>
+            </div>
+
+            {/* Cards de escolha */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              {cards.map(({ Icon, label, desc, goal }, i) => {
+                const selected = selectedGoal === goal;
+                return (
+                  <motion.button
+                    key={label}
+                    type="button"
+                    onClick={() => openDiagnostico(goal)}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, delay: 1.3 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={reduced ? {} : { y: -5 }}
+                    whileTap={reduced ? {} : { scale: 0.98 }}
+                    className={`group relative cursor-pointer flex-1 min-w-[150px] text-left rounded-xl border bg-white p-4 transition-[border-color,box-shadow] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 ${
+                      selected
+                        ? 'border-brand-red shadow-[0_16px_38px_-14px_rgba(255,0,0,0.45)]'
+                        : 'border-gray-200 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.08)] hover:border-brand-red hover:shadow-[0_18px_40px_-14px_rgba(255,0,0,0.42)]'
+                    }`}
+                  >
+                    {/* Marca de selecionado */}
+                    <span
+                      className={`absolute top-3 right-3 w-5 h-5 rounded-full bg-brand-red text-white flex items-center justify-center transition-opacity duration-200 ${
+                        selected ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width={11} height={11} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3.6} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </span>
+
+                    <span
+                      className={`inline-flex w-[52px] h-[52px] mb-3 items-center justify-center rounded-xl transition-colors duration-200 [&_svg]:w-7 [&_svg]:h-7 ${
+                        selected
+                          ? 'bg-brand-red text-white'
+                          : 'bg-brand-red/10 text-brand-red group-hover:bg-brand-red group-hover:text-white'
+                      }`}
+                    >
+                      <Icon />
+                    </span>
+                    <h3
+                      className={`font-display font-bold text-[1.05rem] mb-1 transition-colors ${
+                        selected ? 'text-brand-red' : 'text-black group-hover:text-brand-red'
+                      }`}
+                    >
+                      {label}
+                    </h3>
+                    <p className="text-[0.86rem] text-gray-500 leading-relaxed">{desc}</p>
+                  </motion.button>
+                );
+              })}
+            </div>
           </motion.div>
         </div>
 
       </div>
+
+      <PlanoDeConquista
+        open={diagOpen}
+        onClose={() => setDiagOpen(false)}
+        initialGoal={diagGoal}
+      />
+
     </section>
   );
 }
