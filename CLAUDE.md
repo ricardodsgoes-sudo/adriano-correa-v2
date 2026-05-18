@@ -113,3 +113,35 @@ Quando o usuário pedir skill nova:
 4. Se a skill precisar de arquivos de apoio (templates, exemplos),
    criar dentro da pasta da skill
 5. Seguir o fluxo da skill-creator nativa do Claude Code
+
+---
+
+## Perfil: Adriano Ademicon — Freelancer
+
+**O que é esse workspace:** Operação freelancer de consultoria de consórcios. Aqui ficam atendimentos, propostas, conteúdo e análise de leads.
+
+**Estrutura de pastas:**
+- `_memoria/` — quem é Adriano, tom de voz, foco atual
+- `identidade/` — marca Adriano Ademicon (logo, cores, tipografia)
+- `clientes/` — dados de clientes e prospects (em desenvolvimento)
+- `marketing/` — conteúdo próprio (Instagram, propostas)
+- `saidas/` — emails, documentos, respostas geradas
+- `dados/` — arquivos a analisar (planilhas de leads, etc)
+
+**Quem é:** Adriano é representante freelancer da Ademicon. Trabalha consultoria de consórcios (carro, crédito, casa) para pessoas que querem comprar via consórcio em vez de crédito tradicional.
+
+**Serviços:** Consultoria de consórcio, educação sobre diferenças crédito vs consórcio, facilitação de crédito.
+
+**Clientes:** Pessoas que querem comprar (carro com crédito, consórcio de carro, consórcio de casa). Mercado: Curitiba / São Paulo.
+
+**Tom de voz:** Direto, instrucionário, quebra mitos. Evitar: "vamos juntos!", emoji em email formal, clichês, jargão de guru.
+
+**Tarefas a automatizar (próximas skills):**
+1. Postagem Instagram (semanal) — via `/publicar-tema` ou `/carrossel`
+2. Resposta automática a clientes — skill personalizada de atendimento
+
+**Regras do sistema Adriano:**
+- Cliente novo → guardar em `dados/clientes/` com nome e contato
+- Proposta gerada → arquivo em `saidas/` com data
+- Post criado → enviar pro Instagram via integração Meta Graph API (quando `/aprovar-post` estiver pronto)
+- Gargalo administrativo (financeiro, follow-up) → usar `/analisar-dados` pra planilhas de lead, `/email-profissional` pra comunicação

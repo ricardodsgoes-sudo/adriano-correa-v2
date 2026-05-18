@@ -17,6 +17,11 @@ Thumbs.db
 # Dependências
 node_modules/
 
+# Build Next.js
+.next/
+out/
+tsconfig.tsbuildinfo
+
 # Arquivos temporários
 *.log
 *.tmp
