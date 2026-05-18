@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 /**
- * Deploy para Hostinger via branch "deploy".
+ * Deploy para Hostinger via branch "main".
  * Uso: npm run deploy
  *
  * O que faz:
- *  1. Roda npm run build (gera a pasta out/)
- *  2. Copia o conteúdo de out/ para uma pasta temporária
- *  3. Faz git push --force dos arquivos estáticos para a branch "deploy"
- *  4. Limpa a pasta temporária
+ *  1. Roda npm run build  →  gera pasta out/
+ *  2. Copia conteúdo de out/ para a raiz do repositório
+ *  3. Commit + push para main
  *
- * Configure o Hostinger para usar a branch: deploy
+ * O Hostinger serve direto da raiz — index.html fica na raiz.
  */
 
 const { execSync } = require('child_process');
@@ -18,10 +17,8 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 const outDir  = path.join(rootDir, 'out');
-const tmpDir  = path.join(rootDir, '.deploy-tmp');
 
-const run  = (cmd, cwd = rootDir) => execSync(cmd, { stdio: 'inherit', shell: true, cwd });
-const read = (cmd, cwd = rootDir) => execSync(cmd, { shell: true, cwd }).toString().trim();
+const run = (cmd) => execSync(cmd, { stdio: 'inherit', shell: true, cwd: rootDir });
 
 function copyDir(src, dst) {
   fs.mkdirSync(dst, { recursive: true });
@@ -32,26 +29,21 @@ function copyDir(src, dst) {
 }
 
 // 1. Build
-console.log('\n> Gerando build de producao...\n');
+console.log('\n> Gerando build...\n');
 run('npm run build');
 
-// 2. Copia out/ para pasta temporária
-if (fs.existsSync(tmpDir)) fs.rmSync(tmpDir, { recursive: true, force: true });
-copyDir(outDir, tmpDir);
+// 2. Copia out/ para a raiz do repositório
+console.log('\n> Copiando arquivos estaticos para a raiz...\n');
+copyDir(outDir, rootDir);
 
-// 3. Git init + push para branch deploy
-const remoteUrl = read('git remote get-url origin');
+// 3. Commit e push
 const timestamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
+run('git add -A');
 
-run('git init', tmpDir);
-run('git checkout --orphan deploy', tmpDir);
-run(`git remote add origin ${remoteUrl}`, tmpDir);
-run('git add .', tmpDir);
-run(`git commit -m "deploy: ${timestamp}"`, tmpDir);
-run('git push origin deploy --force', tmpDir);
-
-// 4. Limpa
-fs.rmSync(tmpDir, { recursive: true, force: true });
-
-console.log('\n> Deploy concluido! Branch "deploy" atualizada no GitHub.');
-console.log('  Configure o Hostinger para usar a branch: deploy\n');
+try {
+  run(`git commit -m "deploy: ${timestamp}"`);
+  run('git push origin main');
+  console.log('\n> Deploy concluido! Publicado em main.\n');
+} catch {
+  console.log('\n> Nenhuma alteracao para publicar.\n');
+}
