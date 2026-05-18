@@ -26,6 +26,20 @@ tsconfig.tsbuildinfo
 *.log
 *.tmp
 
-# Drop zone do usuário (só o README vai versionado)
-dados/*
-!dados/README.md
+# Arquivos de tooling — apenas locais, não fazem parte do site
+.agents/
+
+# Arquivos do MazyOS — apenas locais, não fazem parte do site
+.claude/
+.impeccable.md
+CLAUDE.md
+PROXIMOS_PASSOS.md
+skills-lock.json
+_memoria/
+dados/
+identidade/
+marketing/
+saidas/
+scripts/
+templates/
+hero template.png
