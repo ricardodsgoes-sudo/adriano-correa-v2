@@ -19,7 +19,9 @@ node_modules/
 
 # Build Next.js
 .next/
+out/
 tsconfig.tsbuildinfo
+.deploy-tmp/
 
 # Arquivos temporários
 *.log
@@ -39,6 +41,5 @@ dados/
 identidade/
 marketing/
 saidas/
-scripts/
 templates/
 hero template.png
