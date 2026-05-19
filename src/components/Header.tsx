@@ -64,7 +64,7 @@ export default function Header() {
             </button>
           ))}
           <a
-            href="https://wa.me/554197354371"
+            href="https://wa.me/554197354371?text=Ol%C3%A1%2C%20Adriano.%20Vim%20pelo%20site%20e%20gostaria%20de%20entender%20qual%20op%C3%A7%C3%A3o%20de%20cons%C3%B3rcio%20faz%20mais%20sentido%20para%20o%20meu%20objetivo."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-7 py-3 bg-brand-red text-white font-semibold text-[1rem] rounded-sm transition-[background-color,box-shadow,transform] duration-200 hover:bg-red-700 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_-8px_rgba(255,0,0,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2"
@@ -102,7 +102,7 @@ export default function Header() {
               </button>
             ))}
             <a
-              href="https://wa.me/554197354371"
+              href="https://wa.me/554197354371?text=Ol%C3%A1%2C%20Adriano.%20Vim%20pelo%20site%20e%20gostaria%20de%20entender%20qual%20op%C3%A7%C3%A3o%20de%20cons%C3%B3rcio%20faz%20mais%20sentido%20para%20o%20meu%20objetivo."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-sm text-center mt-3 mb-1 transition-[background-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_-8px_rgba(255,0,0,0.6)]"

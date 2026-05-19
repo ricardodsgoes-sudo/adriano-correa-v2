@@ -210,7 +210,7 @@ export default function Hero() {
               </svg>
             </motion.button>
             <motion.a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20Adriano.%20Vim%20pelo%20site%20e%20gostaria%20de%20entender%20qual%20op%C3%A7%C3%A3o%20de%20cons%C3%B3rcio%20faz%20mais%20sentido%20para%20o%20meu%20objetivo.`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto min-h-[54px] inline-flex items-center justify-center px-9 py-4 border-2 border-brand-red text-brand-red font-semibold text-[1.05rem] rounded-lg transition-[background-color,color,box-shadow] duration-200 hover:bg-brand-red hover:text-white hover:shadow-[0_14px_30px_-10px_rgba(255,0,0,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2"

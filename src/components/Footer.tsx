@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 
-const WHATSAPP = 'https://wa.me/554197354371';
+const WHATSAPP = 'https://wa.me/554197354371?text=Ol%C3%A1%2C%20Adriano.%20Vim%20pelo%20site%20e%20gostaria%20de%20entender%20qual%20op%C3%A7%C3%A3o%20de%20cons%C3%B3rcio%20faz%20mais%20sentido%20para%20o%20meu%20objetivo.';
 const INSTAGRAM = 'https://www.instagram.com/adriano_ademicon/';
 const EMAIL = 'investcon.credito.sul@gmail.com';
 
