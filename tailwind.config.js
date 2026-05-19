@@ -17,8 +17,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Sora', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Hanken Grotesk', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['var(--font-sora)', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-hanken)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
         'display-xl': ['3.5rem', { lineHeight: '1.1', fontWeight: '800' }],

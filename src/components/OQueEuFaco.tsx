@@ -128,19 +128,19 @@ const featuredList = [
 const imageCards = [
   {
     Icon: HomeIcon,
-    src: '/card-imoveis.png',
+    src: '/card-imoveis.webp',
     title: 'Consórcio de Imóveis Ademicon',
     desc: 'Conquiste o imóvel ideal para morar ou investir com planejamento e segurança.',
   },
   {
     Icon: CarIcon,
-    src: '/card-veiculos.png',
+    src: '/card-veiculos.webp',
     title: 'Consórcio de Veículos Ademicon',
     desc: 'Seu próximo carro com parcelas planejadas e condições que fazem sentido para você.',
   },
   {
     Icon: PlaneIcon,
-    src: '/card-servicos.png',
+    src: '/card-servicos.webp',
     title: 'Consórcio de Serviços Ademicon',
     desc: 'Realize planos, viagens, festas e projetos com crédito inteligente e sem juros.',
   },

@@ -1,6 +1,21 @@
 import type { Metadata } from 'next';
+import { Sora, Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
+
+const sora = Sora({
+  subsets: ['latin'],
+  variable: '--font-sora',
+  display: 'swap',
+  preload: true,
+});
+
+const hanken = Hanken_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-hanken',
+  display: 'swap',
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: 'Adriano Correa - Consultoria de Consórcios',
@@ -19,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${sora.variable} ${hanken.variable}`}>
       <body className="bg-white text-black">
         <SmoothScroll>{children}</SmoothScroll>
       </body>

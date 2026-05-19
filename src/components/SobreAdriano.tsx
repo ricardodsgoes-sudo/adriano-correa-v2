@@ -181,7 +181,7 @@ export default function SobreAdriano() {
         >
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
             <Image
-              src="/adriano-v2.png"
+              src="/adriano-v2.webp"
               alt="Adriano, consultor de consórcios Ademicon"
               fill
               className="object-cover object-center"

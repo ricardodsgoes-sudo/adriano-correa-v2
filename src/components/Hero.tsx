@@ -109,7 +109,7 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/imagem-hero-nova.png"
+          src="/imagem-hero-nova.webp"
           alt="Homem olhando para imóvel e carro"
           fill
           className="object-cover"
