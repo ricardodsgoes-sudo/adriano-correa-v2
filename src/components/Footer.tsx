@@ -389,14 +389,27 @@ export default function Footer() {
 
       {/* ── Barra inferior ── */}
       <div className="relative border-t border-white/10">
-        <div className="max-w-[1280px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-5 flex flex-col items-center gap-2 text-center">
-          <p className="text-[0.72rem] text-gray-500 leading-relaxed">
+        <div className="max-w-[1280px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[0.72rem] text-gray-500 leading-relaxed text-center sm:text-left max-w-md">
             Este site apresenta o atendimento consultivo de Adriano Correa e não substitui os canais oficiais da Ademicon.
           </p>
-          <p className="flex items-center gap-2 text-[0.78rem] text-gray-400">
-            <LockIcon size={15} />
-            © {year} Adriano Correa. Todos os direitos reservados.
-          </p>
+
+          <div className="flex items-center gap-4 shrink-0">
+            {/* Selo SSL */}
+            <div className="flex items-center gap-2 border border-white/10 rounded-lg px-3 py-2 bg-white/[0.03]">
+              <span className="text-green-400">
+                <LockIcon size={16} />
+              </span>
+              <div className="leading-none">
+                <p className="text-[0.65rem] font-bold text-green-400 tracking-wide uppercase">SSL</p>
+                <p className="text-[0.6rem] text-gray-500 tracking-wide">Secured</p>
+              </div>
+            </div>
+
+            <p className="flex items-center gap-1.5 text-[0.78rem] text-gray-400">
+              © {year} Adriano Correa.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
