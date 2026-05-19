@@ -33,4 +33,4 @@ jobs:
           force_orphan: true
 
       - name: Notificar Hostinger
-        run: curl -s -X POST https://webhooks.hostinger.com/deploy/a71effcc286ed8eee9c9aac632d3b252
+        run: curl -s -X POST https://webhooks.hostinger.com/deploy/9c52d161e841224b875910702b3f513d
