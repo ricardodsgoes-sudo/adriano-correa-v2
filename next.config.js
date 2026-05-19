@@ -3,7 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   devIndicators: false,
   output: 'export',
-  distDir: 'public_html',
   images: {
     unoptimized: true,
   },
