@@ -24,10 +24,13 @@ jobs:
       - name: Build estático
         run: npm run build
 
-      - name: Publicar no branch hostinger
+      - name: Publicar no branch main
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           publish_branch: main
           force_orphan: true
+
+      - name: Notificar Hostinger
+        run: curl -s -X POST https://webhooks.hostinger.com/deploy/a71effcc286ed8eee9c9aac632d3b252
