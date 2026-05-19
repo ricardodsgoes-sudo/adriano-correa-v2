@@ -45,8 +45,8 @@ export default function Header() {
           <Image
             src="/logo01.png"
             alt="Adriano Correa — Consultor Ademicon"
-            height={56}
-            width={230}
+            height={40}
+            width={164}
             className="object-contain"
             priority
           />
