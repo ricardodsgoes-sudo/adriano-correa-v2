@@ -134,12 +134,6 @@ const TrophyIcon = ({ size }: IconProps) => (
   </svg>
 );
 
-const LockIcon = ({ size }: IconProps) => (
-  <svg {...base(size)}>
-    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-  </svg>
-);
 
 const ArrowIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.25} strokeLinecap="round" strokeLinejoin="round" width={16} height={16}>
@@ -394,22 +388,9 @@ export default function Footer() {
             Este site apresenta o atendimento consultivo de Adriano Correa e não substitui os canais oficiais da Ademicon.
           </p>
 
-          <div className="flex items-center gap-4 shrink-0">
-            {/* Selo SSL */}
-            <div className="flex items-center gap-2 border border-white/10 rounded-lg px-3 py-2 bg-white/[0.03]">
-              <span className="text-green-400">
-                <LockIcon size={16} />
-              </span>
-              <div className="leading-none">
-                <p className="text-[0.65rem] font-bold text-green-400 tracking-wide uppercase">SSL</p>
-                <p className="text-[0.6rem] text-gray-500 tracking-wide">Secured</p>
-              </div>
-            </div>
-
-            <p className="flex items-center gap-1.5 text-[0.78rem] text-gray-400">
-              © {year} Adriano Correa.
-            </p>
-          </div>
+          <p className="text-[0.78rem] text-gray-400 shrink-0">
+            © {year} Adriano Correa.
+          </p>
         </div>
       </div>
     </footer>
